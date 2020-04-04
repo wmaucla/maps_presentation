@@ -21,7 +21,7 @@
 		<link rel="stylesheet" href="{{ url_for('static', filename='css/theme/serif.css') }}">
 
 		<!-- Theme used for syntax highlighting of code -->
-		<link rel="stylesheet" href="static/lib/css/zenburn.css">
+		<link rel="stylesheet" href="{{ url_for('static', filename='lib/css/zenburn.css') }}">
 	</head>
 	<body>
 		<div class="reveal">
@@ -184,8 +184,8 @@
 			</div>
 		</div>
 
-		<script src="static/lib/js/head.min.js"></script>
-		<script src="static/js/reveal.js"></script>
+		<script src="{{ url_for('static', filename='lib/js/head.min.js') }}"></script>
+		<script src="{{ url_for('static', filename='js/reveal.js') }}"></script>
 
 		<script>
 			Reveal.initialize({
