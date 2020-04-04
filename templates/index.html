@@ -1,0 +1,136 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>reveal.js</title>
+
+		<link rel="stylesheet" href="{{ url_for('static', filename='css/reveal.css') }}">
+		<link rel="stylesheet" href="{{ url_for('static', filename='css/theme/serif.css') }}">
+
+		<!-- Theme used for syntax highlighting of code -->
+		<link rel="stylesheet" href="static/lib/css/zenburn.css">
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+				<section name="Introduction">
+					<section>
+						<h1> MAPS - ML for APS </h1>
+					</section>
+				</section>
+				<section name="Business Objective">
+					<section>
+						<h2> Business Objective </h2>
+					</section>
+					<section>
+						Attending Physician Statements provide lots of useful patient data in pdf form. We want to extract useful information in order to help inform underwriting decisions
+					</section>
+					<section>
+
+					</section>
+				</section>
+				<section name="Pipelining">
+					<section>
+						<h2> Pipelining </h2>
+						<p> Everyone needs it, no one wants to do it </p>
+					</section>
+					<section>
+						<img src="{{ url_for('static', filename='images/metaflow.png') }}" style="width:40%; margin:0; border:0">
+						<p> A framework for real-life data science - from Netflix </p>
+						</p>
+					</section>
+					<section>
+						<h3> Metaflow Review </h3>
+						<ul>
+							<li> Pros: Lightweight setup / learning curve, separate namespaces, data science focused </li>
+							<li> Cons: no native Azure support, no scheduler, hard to customize flows </li>
+						</ul>
+					</section>
+					<section>
+						<h3> Thoughts </h3>
+						<ul>
+							<li> Metaflow: better for smaller DS-specific projects with AWS and straightforward flows </li>
+							<li> MLFlow: mostly suited for tracking model versions, not pipelines </li>
+							<li> Luigi: most intuitive, good for simpler ETL pipelines  </li>
+							<li> Airflow: best overall for larger projects w/ larger complexity  </li>
+							<li> Kubeflow: perhaps best suited overall; separate docker containers ideal </li>
+							<li> Flyte: yet another open-source alternative </li>
+						</ul>
+					</section>
+				</section>
+				<section name="Front-End">
+					<section>
+						<h2> Front-End </h2>
+					</section>
+					<section>
+						<h3> Bootstrap and Flask </h3>
+						<img src="static/images/flask_front_end.png">
+					</section>
+					<section>
+						<img src="static/images/azuresignon.png">
+						<p>
+							Security measures: Flask OIDC configured with Azure SSO - Azure app registration.
+						</p>
+					</section>
+					<section>
+						<h3> Deployment </h3>
+						<ul>
+							<li class="fragment"> Dockerize app and deploy to Azure container instance! </li>
+							<li class="fragment"> ... but container instances don't support GPU containers </li>
+							<li class="fragment"> Ok, write it without GPU! </li>
+							<li class="fragment"> ... but still doesn't work with virtual nets - isn't secure :( </li>
+							<li class="fragment"> So, deploy to kubernetes cluster! </li>
+							<li class="fragment"> ... but memory limit on container - model file too big </li>
+						</ul>
+					</section>
+					<section>
+					<h2> Objective </h2>
+						<ul>
+							<li> Produce high quality matches - Deepmatcher &#9989; </li>
+							<li> Develop an automated process - Luigi pipeline &#9989; </li>
+							<li class="fragment"> Easily accessible interface for users - Flask website deployed to Kubernetes &#8263; </li>
+						</ul>
+					</section>
+				</section>
+				<section>
+					<section>
+						<h2> Summary </h2>
+					</section>
+					<section>
+						<h2> Objective </h2>
+							<ul>
+								<li> Produce high quality matches - Deepmatcher &#9989; </li>
+								<li> Develop an automated process - Luigi pipeline &#9989; </li>
+								<li> Easily accessible interface for users - Flask website deployed to Kubernetes &#8263; </li>
+							</ul>
+					</section>
+					<section>
+						<img src="static/images/overview.png">
+					</section>
+				</section>
+				</section>
+			</div>
+		</div>
+
+		<script src="static/lib/js/head.min.js"></script>
+		<script src="static/js/reveal.js"></script>
+
+		<script>
+			Reveal.initialize({
+				math: {
+					mathjax: 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js',
+					config: 'TeX-AMS_HTML-full'  // See http://docs.mathjax.org/en/latest/config-files.html
+				},
+				dependencies: [
+					{ src: 'static/plugin/markdown/marked.js' },
+					{ src: 'static/plugin/markdown/markdown.js' },
+					{ src: 'static/plugin/notes/notes.js', async: true },
+					{ src: 'static/plugin/math/math.js', async: true },
+					{ src: 'static/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
+				]
+			});
+		</script>
+	</body>
+</html>
