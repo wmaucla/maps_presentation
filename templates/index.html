@@ -28,7 +28,7 @@
 						Attending Physician Statements provide lots of useful patient data in pdf form. We want to extract useful information in order to help inform underwriting decisions
 					</section>
 					<section>
-
+						NEED TO ADD PHOTO HERE
 					</section>
 				</section>
 				<section name="Pipelining">
@@ -56,42 +56,19 @@
 							<li> Luigi: most intuitive, good for simpler ETL pipelines  </li>
 							<li> Airflow: best overall for larger projects w/ larger complexity  </li>
 							<li> Kubeflow: perhaps best suited overall; separate docker containers ideal </li>
-							<li> Flyte: yet another open-source alternative </li>
+							<li> Flyte: ? </li>
 						</ul>
 					</section>
 				</section>
-				<section name="Front-End">
+				<section name="Question Answer">
 					<section>
-						<h2> Front-End </h2>
+						<h2> Question Answer </h2>
 					</section>
 					<section>
-						<h3> Bootstrap and Flask </h3>
-						<img src="static/images/flask_front_end.png">
-					</section>
-					<section>
-						<img src="static/images/azuresignon.png">
 						<p>
-							Security measures: Flask OIDC configured with Azure SSO - Azure app registration.
-						</p>
-					</section>
-					<section>
-						<h3> Deployment </h3>
-						<ul>
-							<li class="fragment"> Dockerize app and deploy to Azure container instance! </li>
-							<li class="fragment"> ... but container instances don't support GPU containers </li>
-							<li class="fragment"> Ok, write it without GPU! </li>
-							<li class="fragment"> ... but still doesn't work with virtual nets - isn't secure :( </li>
-							<li class="fragment"> So, deploy to kubernetes cluster! </li>
-							<li class="fragment"> ... but memory limit on container - model file too big </li>
-						</ul>
-					</section>
-					<section>
-					<h2> Objective </h2>
-						<ul>
-							<li> Produce high quality matches - Deepmatcher &#9989; </li>
-							<li> Develop an automated process - Luigi pipeline &#9989; </li>
-							<li class="fragment"> Easily accessible interface for users - Flask website deployed to Kubernetes &#8263; </li>
-						</ul>
+							Text: Question answering (QA) is a computer science discipline within the fields of information retrieval and natural language processing (NLP), which is concerned with building systems that automatically answer questions posed by humans in a natural language.
+							</p>
+						<p>Human: What is a Question Answering system?</p>
 					</section>
 				</section>
 				<section>
