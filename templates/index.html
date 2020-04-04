@@ -28,7 +28,12 @@
 						Attending Physician Statements provide lots of useful patient data in pdf form. We want to extract useful information in order to help inform underwriting decisions
 					</section>
 					<section>
-						NEED TO ADD PHOTO HERE
+						<img src="{{ url_for('static', filename='images/maps_overview.png') }}" style="margin:0; border:0">
+					</section>
+					<section>
+						<p>
+							For POC, exploring <b> diagnosis extraction </b> specifically - finding the diagnosis(es) that are described within an APS
+						</p>
 					</section>
 				</section>
 				<section name="Pipelining">
@@ -55,7 +60,7 @@
 							<li> MLFlow: mostly suited for tracking model versions, not pipelines </li>
 							<li> Luigi: most intuitive, good for simpler ETL pipelines  </li>
 							<li> Airflow: best overall for larger projects w/ larger complexity  </li>
-							<li> Kubeflow: perhaps best suited overall; separate docker containers ideal </li>
+							<li> Kubeflow: perhaps best suited overall; separate docker containers ideal and good for deployment </li>
 							<li> Flyte: ? </li>
 						</ul>
 					</section>
@@ -63,12 +68,97 @@
 				<section name="Question Answer">
 					<section>
 						<h2> Question Answer </h2>
+						<p style="font-size:60%">
+							'Cause when you ask a question, you expect an answer. That's the way it works... question, answer, answer, question. If he gave the answer, I'd have to come up with the question. That would be Jeopardy. That's wrong. </br> <i> Colin Mochrie, Whose Line is It Anyway</i>
+						</p>
 					</section>
 					<section>
+						Try it out <a href="https://gqjfkrpn07.execute-api.us-west-2.amazonaws.com/prod/qa_page"> here </a> with the following text
 						<p>
-							Text: Question answering (QA) is a computer science discipline within the fields of information retrieval and natural language processing (NLP), which is concerned with building systems that automatically answer questions posed by humans in a natural language.
-							</p>
-						<p>Human: What is a Question Answering system?</p>
+							Question answering (QA) is a computer science discipline within the fields of information retrieval and natural language processing (NLP), which is concerned with building systems that automatically answer questions posed by humans in a natural language.
+						</p>
+					</section>
+					<section>
+						<img src="{{ url_for('static', filename='images/huggingface_logo.svg') }}" style="margin:0; border:0">
+						<p> Powered by huggingface transformers</p>
+					</section>
+					<section>
+						<h3> BERT Models </h3>
+						<p> Pretrained models are a way of life </p>
+						<ul>
+							<li> Default BERT fine-tuned on SQUAD </li>
+							<li> BioBERT - pre-trained biomedical language representation model for biomedical text mining </li>
+							<li> SciBERT - trained on papers from the corpus of semanticscholar.org </li>
+						</ul>
+					</section>
+					<section>
+						<img src="{{ url_for('static', filename='images/qa_good_bad.png') }}" style="height:120%; margin:0; border:0">
+					</section>
+					<section>
+						<h3> Why QA? </h3>
+						<ul>
+							<li> Also QuickUMLS - a tool for fast, unsupervised biomedical concept extraction from medical text w/ approximate string matching  </li>
+							<li class="fragment"> Hope to extend QA to other use cases - e.g. extracting dates - and long term be made available to underwriters </li>
+							<li class="fragment"> Much better at handling spelling mistakes compared to spellcheckers or QuickUMLS </li>
+							<li class="fragment"> Context matters heavily </li>
+						</ul>
+					</section>
+					<section>
+						<h3> Challenges </h3>
+						<ul>
+							<li> Negation detection </li>
+							<li> Multiple diagnosis </li>
+							<li> Different formats </li>
+							<li> <b> OCR quality </b> </li>
+						</ul>
+					</section>
+				</section>
+				<section name="Image Modelling">
+					<section>
+						<h2> Images Classification </h2>
+					</section>
+					<section>
+						<img src="{{ url_for('static', filename='images/image_classification.png') }}" style="margin:0; border:0">
+					</section>
+					<section>
+						<img src="{{ url_for('static', filename='images/pytorch_logo.png') }}" style="margin:0; border:0">
+						<p> Classification model based on pytorch pretrained models - categories like lists, paragraph-based text </p>
+					</section>
+					<section>
+						<p> Classification works well at the moment, with a lot more work to be done tackling challenges like handwriting, tables, check boxes, etc. </p>
+					</section>
+				</section>
+				<section name="OCR">
+					<section>
+						<h2> Tesseract OCR </h2>
+					</section>
+					<section>
+						<p> Used Tesseract due to open source - other alternatives would require us sending patient information to third parties. Experimented with fine-tuning and adding custom vocab to Tesseract models with minor improvements </p>
+					</section>
+					<section>
+						<img src="{{ url_for('static', filename='images/open_cv.png') }}" style="width:40%; margin:0; border:0">
+						<p> Adding OpenCV for image processing prior to Tesseract - morphological + thresholding operations help </p>
+					</section>
+					<section>
+						<p> Conclusion: biggest challenges come from poor OCR due to faded text from scanned pdfs - what else can be done? </p>
+					</section>
+				</section>
+				<section name="Frontier">
+					<section>
+						<h2> On the Frontier </h2>
+					</section>
+					<section>
+						<h3> Visual Question Answer </h3>
+						<img src="{{ url_for('static', filename='images/pythia.jpeg') }}" style="width:75%; margin:0; border:0">
+						<p> Pythia, from FB Engineering </p>
+					</section>
+					<section>
+						<h3> Rosetta </h3>
+						<img src="{{ url_for('static', filename='images/rosetta.png') }}" style="width:80%; margin:0; border:0">
+					</section>
+					<section>
+						<p> Special shout out to PapersWithCode and the number of random papers I've looked at as well (Sentence BERT, multitask learning, ...) </p>
+						<img src="{{ url_for('static', filename='images/papers_meme.jpg') }}" style="width:60%; margin:0; border:0">
 					</section>
 				</section>
 				<section>
@@ -76,15 +166,7 @@
 						<h2> Summary </h2>
 					</section>
 					<section>
-						<h2> Objective </h2>
-							<ul>
-								<li> Produce high quality matches - Deepmatcher &#9989; </li>
-								<li> Develop an automated process - Luigi pipeline &#9989; </li>
-								<li> Easily accessible interface for users - Flask website deployed to Kubernetes &#8263; </li>
-							</ul>
-					</section>
-					<section>
-						<img src="static/images/overview.png">
+						<img src="{{ url_for('static', filename='images/tech_stack_maps.png') }}" style="margin:0; border:0">
 					</section>
 				</section>
 				</section>
