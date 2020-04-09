@@ -36,14 +36,14 @@
 						<h2> Business Objective </h2>
 					</section>
 					<section>
-						Attending Physician Statements provide lots of useful patient data in pdf form. We want to extract useful information in order to help inform underwriting decisions
+						Attending Physician Statements (APS) provide lots of useful patient data in pdf form. We want to extract useful information in order to help inform underwriting decisions.
 					</section>
 					<section>
 						<img src="{{ url_for('static', filename='images/maps_overview.png') }}" style="margin:0; border:0">
 					</section>
 					<section>
 						<p>
-							For POC, exploring <b> diagnosis extraction </b> specifically - finding the diagnosis(es) that are described within an APS
+							For POC, exploring <b> diagnosis extraction </b> specifically - finding the patient's diagnosis(es) within an APS
 						</p>
 					</section>
 				</section>
@@ -65,14 +65,14 @@
 						</ul>
 					</section>
 					<section>
-						<h3> Thoughts </h3>
+						<h3> ML Management - Thoughts </h3>
 						<ul>
-							<li> Metaflow: better for smaller DS-specific projects with AWS and straightforward flows </li>
-							<li> MLFlow: mostly suited for tracking model versions, not pipelines </li>
-							<li> Luigi: most intuitive, good for simpler ETL pipelines  </li>
-							<li> Airflow: best overall for larger projects w/ larger complexity  </li>
-							<li> Kubeflow: perhaps best suited overall; separate docker containers ideal and good for deployment </li>
-							<li> Flyte: ? </li>
+							<li class="fragment"> Metaflow: better for smaller DS-specific projects with AWS and straightforward flows </li>
+							<li class="fragment"> MLFlow: mostly suited for tracking model versions, not pipelines </li>
+							<li class="fragment"> Luigi: most intuitive, good for simpler ETL pipelines  </li>
+							<li class="fragment"> Airflow: good overall for larger projects w/ larger complexity  </li>
+							<li class="fragment"> Kubeflow: perhaps best suited overall; separate docker containers ideal and good for deployment </li>
+							<li class="fragment"> Flyte: ? </li>
 						</ul>
 					</section>
 				</section>
@@ -103,7 +103,7 @@
 						</ul>
 					</section>
 					<section>
-						<img src="{{ url_for('static', filename='images/qa_good_bad.png') }}" style="height:120%; margin:0; border:0">
+						<img src="{{ url_for('static', filename='images/qa_good_bad.png') }}" style="height:150%; width:150%; margin:0; border:0">
 					</section>
 					<section>
 						<h3> Why QA? </h3>
@@ -126,7 +126,7 @@
 				</section>
 				<section name="Image Modelling">
 					<section>
-						<h2> Images Classification </h2>
+						<h2> Image Classification </h2>
 					</section>
 					<section>
 						<img src="{{ url_for('static', filename='images/image_classification.png') }}" style="margin:0; border:0">
@@ -136,7 +136,7 @@
 						<p> Classification model based on pytorch pretrained models - categories like lists, paragraph-based text </p>
 					</section>
 					<section>
-						<p> Classification works well at the moment, with a lot more work to be done tackling challenges like handwriting, tables, check boxes, etc. </p>
+						<p> Models built for classification works well at the moment, with a lot more work to be done tackling challenges like handwriting, tables, check boxes, etc. </p>
 					</section>
 				</section>
 				<section name="OCR">
